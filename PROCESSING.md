@@ -34,6 +34,7 @@ How the text on Reports that Matter was made, and where it still falls short of 
 - **Figures are not shown.** The volume has 22 figures (photographs, plans, maps, CCTV stills). They are not served; the captions are. Any words drawn inside them (labels on a plan, PDF p.116) are in the PDF only.
 - **Chronology page anchors.** The third column of the table (the Inquiry references) is read by the PDF's layout in an order that does not match the HTML, so 186 short stretches of it are listed in `fidelity.md` as unmatched (all reported at the table's first page, PDF p.30), and some of the table's page markers sit a row or two off. The text is the HTML's (reportsthatmatter-mws2).
 - **A passage on PDF p.236** (Chapter 5, after paragraph 191) is in a different order in the HTML and the PDF; it is listed in `fidelity.md` (reportsthatmatter-k2ro).
+- **The chronology's header** is printed on every page of the table but shown here only on its first part; each later part (one per page) opens with a blank header row (reportsthatmatter-ucp9).
 - **Emphasis in notes** is not shown.
 - **Markers on headings.** Twenty-five note markers the HTML sets on a heading are served at the end of the next paragraph, a paragraph or so from where the PDF prints them.
 
