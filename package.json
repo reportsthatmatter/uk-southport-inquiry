@@ -1,0 +1,9 @@
+{
+  "name": "uk-southport-inquiry",
+  "private": true,
+  "type": "module",
+  "description": "Source archive and ingestion definition for: The Southport Inquiry Phase 1 report, Volume 1",
+  "dependencies": {
+    "@rtm/ingest": "github:reportsthatmatter/ingest#v0.31.0"
+  }
+}
