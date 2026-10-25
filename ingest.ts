@@ -36,7 +36,12 @@ export default pipeline({
       // Notes are printed at the page foot, numbered 1-641 through the volume: the shadow lifts them
       // out of the page text and the edition's footnote list is aligned to them.
       notes: "page-foot",
-      files: [{ path: "reference/raw/volume-1-accessible.html", sha256: "f0e376903f0ad9d3b028066f37d235acf40e20b7c0eb221779768ba3b32f5b15" }],
+      files: [
+        { path: "reference/raw/volume-1-accessible.html", sha256: "f0e376903f0ad9d3b028066f37d235acf40e20b7c0eb221779768ba3b32f5b15" },
+        // The tagged PDF's paragraphs (its structure tree), read only to rejoin the paragraphs the HTML
+        // breaks at a forced line break (govuk-html.ts joinByTags; PDF p.186, Chapter 5 para 32).
+        { path: "reference/blocks.jsonl", sha256: "33df1733ca3f1987c4259fa933bdb3f9571246fcff93b3a71f07197c08dc9f9e" },
+      ],
       read: readSouthportHtml,
     }),
     // Every page but the first seven carries a running head in HelveticaNeueLTPro 15pt grey (#3c3c3b):

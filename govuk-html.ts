@@ -390,10 +390,89 @@ export const SOUTHPORT: GovukOptions = {
 
 /** The report's own reader, for `cleanEdition({ read })`. */
 export function readSouthportHtml(files: Array<{ path: string; text: string }>): Edition {
-  const edition = readGovukHtml(files.map((f) => f.text).join("\n"), SOUTHPORT);
+  const html = files.filter((f) => f.path.endsWith(".html"));
+  const tags = files.find((f) => f.path.endsWith("blocks.jsonl"));
+  const edition = readGovukHtml(html.map((f) => f.text).join("\n"), SOUTHPORT);
+  if (tags) joinByTags(edition.blocks, tags.text);
+  joinSplitParagraphs(edition.blocks);
   // The PDF's contents (pp.4-7) and its note on the two volumes (p.7) sit between the imprint and the
   // Foreword; the HTML has neither. The PDF's own blocks fill the gap (cleanEdition fillGaps).
   const first = edition.blocks.findIndex((b) => b.kind === "heading");
   edition.blocks.splice(first, 0, { kind: "gap", reason: "contents and the note on the two volumes (PDF pp.4-7), which the HTML edition does not carry" });
   return edition;
+}
+
+/**
+ * Ten sentences the HTML edition breaks across two `<p>`s (each at a line or page turn of the PDF,
+ * where the PDF runs on in one paragraph). Named by the opening words of the second half, with the
+ * PDF page; each must be found exactly once, or the build fails.
+ */
+export const SOUTHPORT_SPLITS: ReadonlyArray<readonly [string, number]> = [
+  ["(and, on occasion, unlawful) online activity", 20],
+  ["AR would not have been at liberty", 24],
+  ["not have been visible to users", 121],
+  ["\u201cI owe everything to Heidi", 128],
+  ["Mr Jonathan Cape,", 129],
+  ["violent outburst. The WhatsApp messages", 186],
+  ["1.4 kilograms or more.", 190],
+  ["a \u2018Anglo Arms Kukri machete\u2019", 203],
+  ["/ OWA 2019 market.", 230],
+  ["It is manifestly unsuitable for viewing by children.", 260],
+];
+
+/** Rejoins each `SOUTHPORT_SPLITS` paragraph to the one before it. */
+export function joinSplitParagraphs(blocks: EditionBlock[], splits = SOUTHPORT_SPLITS): void {
+  for (const [opening, page] of splits) {
+    const at = blocks.flatMap((b, i) => (b.kind === "paragraph" && b.text.startsWith(opening) ? [i] : []));
+    if (at.length === 0 && blocks.some((b) => b.kind === "paragraph" && b.text.includes(` ${opening}`))) continue; // already rejoined by joinByTags
+    if (at.length !== 1) throw new Error(`govuk-html: split at PDF p.${page} ("${opening}") found ${at.length} times`);
+    const i = at[0];
+    const prev = blocks[i - 1];
+    if (prev?.kind !== "paragraph") throw new Error(`govuk-html: split at PDF p.${page}: the block before is not a paragraph`);
+    blocks.splice(i - 1, 2, { ...prev, text: `${prev.text} ${(blocks[i] as typeof prev).text}` });
+  }
+}
+
+const tagNorm = (s: string) =>
+  s
+    .replace(/\[\^[^\]]+\]/g, "")
+    .replace(/[\\*_]/g, "")
+    .replace(/[‘’]/g, "'")
+    .replace(/[“”]/g, '"')
+    .replace(/\s+/g, " ")
+    .trim();
+
+/** A paragraph that opens with the report's own number or a list label ("12.", "b.", "iv.") starts a block. */
+const LABELLED = /^(?:\d+\.|[a-z]\.|[ivx]+\.)\s/;
+
+/**
+ * The HTML edition breaks a paragraph wherever the PDF has a forced line break inside it (PDF p.186,
+ * para 32 of Chapter 5: "…manufacture ricin. / He also ordered ‘Food Storage Containers’", one
+ * paragraph on the page, two `<p>`s in the HTML), about a hundred times in the volume. The tagged PDF
+ * is the authority on paragraphs: its structure tree (reference/blocks.jsonl, built from the PDF's tags
+ * by the site's scripts/score/reference.py, pinned in ingest.ts) has each as one P or LI element. Two
+ * consecutive edition paragraphs are joined when one tagged paragraph runs from the end of the first
+ * straight into the start of the second, and the second opens with no number or list label.
+ */
+export function joinByTags(blocks: EditionBlock[], jsonl: string): number {
+  const tagged = jsonl
+    .split("\n")
+    .filter((l) => l.trim())
+    .map((l) => JSON.parse(l) as { type: string; text: string })
+    .filter((r) => r.type === "paragraph" || r.type === "quote" || r.type === "list")
+    .map((r) => tagNorm(r.text))
+    .join("\n");
+  let joined = 0;
+  for (let i = blocks.length - 1; i > 0; i--) {
+    const a = blocks[i - 1];
+    const b = blocks[i];
+    if (a.kind !== "paragraph" || b.kind !== "paragraph" || a.float || b.float) continue;
+    if (LABELLED.test(b.text)) continue;
+    const tail = tagNorm(a.text).slice(-40);
+    const head = tagNorm(b.text).slice(0, 40);
+    if (tail.length < 20 || head.length < 10 || !tagged.includes(`${tail} ${head}`)) continue;
+    blocks.splice(i - 1, 2, { ...a, text: `${a.text} ${b.text}` });
+    joined++;
+  }
+  return joined;
 }

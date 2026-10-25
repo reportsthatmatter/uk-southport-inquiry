@@ -1,0 +1,106 @@
+# Golden pages: ground truth for this report, read off the PDF page image and checked by `pnpm ingest verify`.
+# Format and rules: @rtm/ingest src/golden.ts and the site's docs/quality-harness.md ("Golden pages").
+# A page marked xfail is a known pipeline defect: it stays red here, verify stays green, and the bead says why.
+# Printed page = PDF page - 7 (PDF p.8 is folio 1). Numbered paragraphs restart in each chapter; notes run 1-641.
+# The text is served from the GOV.UK HTML edition (cleanEdition); these pages check what reaches the reader.
+pages:
+  # The Foreword's first page: the part heading, numbered paragraphs, the fifth running on to p.9.
+  - pdf: 8
+    printed: 1
+    verified_by: "Claude (Opus 5.5), 2026-10-25, against the page image and pdftotext -layout"
+    features: [H]
+    blocks:
+      - heading: "Foreword"
+        level: 2
+      - paragraph: {start: "1. The events of 29 July", end: "forever marked by this tragedy."}
+      - paragraph: {start: "2. From the outset of this", end: "has carried out its work."}
+      - paragraph: {start: "3. In establishing this statutory Inquiry,", end: "every phase of our examination."}
+      - paragraph: {start: "4. Phase 1 of the Inquiry", end: "the urgency of its task."}
+      - paragraph: {start: "5. Throughout this process, we have", continues: true}
+    markers: []
+  # A chapter's first body page: "Introduction", a long section heading, note 1 at the foot.
+  - pdf: 12
+    printed: 5
+    verified_by: "Claude (Opus 5.5), 2026-10-25, against pdftotext -layout"
+    features: [H, F]
+    blocks:
+      - heading: "Introduction"
+        level: 3
+      - paragraph: {start: "1. As part of its investigation", end: "not taken by individual agencies."}
+      - paragraph: {start: "2. However, a proper understanding of", end: "the failures of those agencies."}
+      - paragraph: {start: "3. This chapter addresses the five", end: "reinforced and exacerbated the others."}
+      - paragraph: {start: "4. Everything that follows in this", end: "with the relevant individual agencies."}
+      - heading: "A failure of any organisation or multi-agency arrangement to take ownership of the risk that AR posed"
+        level: 3
+      - paragraph: {start: "5. There was a fundamental failure", end: "the risk that AR posed."}
+      - paragraph: {start: "6. This manifested in a number", end: "February 2020 and January 2021.", notes: [1]}
+    footnotes: [1]
+    markers: [1]
+  # A paragraph the HTML breaks mid-sentence at a line turn ("acutely inappropriate / (and, on occasion,
+  # unlawful)"), one paragraph in the PDF: rejoined by joinSplitParagraphs.
+  - pdf: 20
+    printed: 13
+    verified_by: "Claude (Opus 5.5), 2026-10-25, against pdftotext -layout"
+    features: [S, F]
+    blocks:
+      - heading: "Failure to oversee and intervene in AR’s online behaviour"
+        level: 3
+      - paragraph: {start: "31. Following the attack, Merseyside Police’s", end: "atrocities, both contemporary and historical.", notes: [40]}
+      - paragraph: {start: "32. Although there is no evidence", end: "is addressed more generally below)."}
+      - paragraph: {start: "33. There had been an earlier", end: "arising from AR’s online behaviour."}
+      - paragraph: {start: "34. Consistent with this, the record", end: "to him by other students."}
+    footnotes: [40]
+    markers: [40]
+    must_contain: ["acutely inappropriate (and, on occasion, unlawful) online activity"]
+  # The overview chronology: a three-column table (Date/period, Detailed event summary, Inquiry reference);
+  # each row its own row, the reference column kept in its cell.
+  - pdf: 40
+    printed: 33
+    verified_by: "Claude (Opus 5.5), 2026-10-25, against the page image"
+    features: [table]
+    must_contain: ["The closure is approved by her supervisor DS James Neale."]
+    separate: ["The First Referral to Prevent is formally closed", "As a result of the Merseyside Police investigation", "Mr John Hicklin of FCAMHS writes to", "Mr Morgan of CAMHS writes to"]
+  # Two paragraphs the HTML breaks at forced line breaks inside one PDF paragraph ("...view the footage. /
+  # But when..." in 28, and "...would, therefore, / not have been visible" in 29): rejoined (joinByTags,
+  # joinSplitParagraphs).
+  - pdf: 121
+    printed: 114
+    verified_by: "Claude (Opus 5.5), 2026-10-25, against pdftotext -layout"
+    features: [S, F]
+    blocks:
+      - paragraph: {start: "28. At 11:04, approximately six minutes", end: "a church in Sydney, Australia.", notes: [96]}
+      - paragraph: {start: "29. The video was flagged by", end: "force at the relevant time.", notes: [97, 98, 99]}
+      - paragraph: {start: "30. Despite the wide terms of", continues: true}
+    footnotes: [96, 97, 98, 99, 100, 101, 102, 103]
+    must_contain: ["would, therefore, not have been visible to users"]
+  # Lettered items inside a numbered paragraph, a minor (h5) heading, and a forced line break rejoined in 18.
+  - pdf: 183
+    printed: 176
+    verified_by: "Claude (Opus 5.5), 2026-10-25, against pdftotext -layout"
+    features: [L, H, F]
+    blocks:
+      - paragraph: {start: "16. The fact that the smoke", end: "on the product detail page.", notes: [307, 308]}
+      - paragraph: {start: "17. In conclusion, I am concerned", end: "followed. Moreover, the fact that:"}
+      - paragraph: {start: "a. Amazon failed to identify the", end: "restriction for some time; and"}
+      - paragraph: {start: "b. The retailer is relying on", end: "I consider this further below."}
+      - heading: "Sledgehammer"
+        level: 4
+      - paragraph: {start: "18. On 10 June 2023, AR", end: "the purchase of a sledgehammer.", notes: [309]}
+      - paragraph: {start: "19. Alphonse R saw the sledgehammer", end: "which contained an airing cupboard.", notes: [310, 311]}
+      - paragraph: {start: "20. Since the attack, Jimbobs Ltd", end: "do more in this regard.", notes: [312]}
+    footnotes: [307, 308, 309, 310, 311, 312]
+    markers: [307, 308, 309, 310, 311, 312]
+  # 31 split mid-sentence in the HTML ("met with a / violent outburst"), 32 at a forced line break
+  # ("...manufacture ricin. / He also ordered"): each one paragraph on the page image.
+  - pdf: 186
+    printed: 179
+    verified_by: "Claude (Opus 5.5), 2026-10-25, against the page image"
+    features: [S, F]
+    blocks:
+      - paragraph: {start: "30. The items were duly delivered", end: "use our address next time”.", notes: [319]}
+      - paragraph: {start: "31. Alphonse R stated in evidence", end: "it was difficult at home.", notes: [320, 321, 322]}
+      - paragraph: {start: "32. On 25 January 2022, via", end: "Church Road, Banks.", notes: [323]}
+      - paragraph: {start: "33. On 1 February 2022, via", end: "order on 25 January 2022.", notes: [324]}
+      - paragraph: {start: "34. On 30 April 2022, via", end: "as for these previous orders.", notes: [325]}
+    footnotes: [319, 320, 321, 322, 323, 324, 325]
+    markers: [319, 320, 321, 322, 323, 324, 325]
