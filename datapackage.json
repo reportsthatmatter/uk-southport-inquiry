@@ -1,0 +1,59 @@
+{
+  "name": "uk-southport-inquiry",
+  "title": "The Southport Inquiry: Phase 1 report, Volume 1",
+  "resources": [
+    {
+      "title": "The Southport Inquiry Report: Volume 1, HC 1768-I, ISBN 978-1-5286-6243-7, version 2 (July 2026; the original of 13 April 2026 with a cover page added), as published by the Southport Inquiry and on GOV.UK",
+      "path": "archive/southport-inquiry-phase-1-volume-1-hc1768-i-v2.pdf",
+      "format": "pdf",
+      "mediatype": "application/pdf",
+      "bytes": 6340036,
+      "hash": "sha256:c27fdbfc7b76aca70cf72af17349da56ad3b46ab4faf391e83978ed361c87bcf",
+      "sources": [
+        {
+          "title": "31.236_HO_Southport_Inquiry_Volume1_WEB_v2__1_.pdf (GOV.UK assets)",
+          "web": "https://assets.publishing.service.gov.uk/media/6a61eef4abcde513b38b6d95/31.236_HO_Southport_Inquiry_Volume1_WEB_v2__1_.pdf"
+        },
+        {
+          "title": "The Southport Inquiry Phase 1 report (GOV.UK publication page)",
+          "web": "https://www.gov.uk/government/publications/the-southport-inquiry-phase-1-report"
+        }
+      ]
+    },
+    {
+      "title": "The GOV.UK accessible HTML edition of Volume 1 (content API record, fetched 25 October 2026), served as the report's text and structure",
+      "path": "reference/raw/volume-1-accessible.json",
+      "format": "json",
+      "mediatype": "application/json",
+      "bytes": 827070,
+      "hash": "sha256:12712a1235ca201bd8943a65e72621c9c755a35125885e89523d9b76ff531291",
+      "sources": [
+        {
+          "title": "Phase 1 report: volume 1 (accessible) (GOV.UK content API)",
+          "web": "https://www.gov.uk/api/content/government/publications/the-southport-inquiry-phase-1-report/phase-1-report-volume-1-accessible"
+        }
+      ]
+    },
+    {
+      "title": "The record's details.body (781,252 characters of govspeak HTML), extracted unchanged; the file ingest.ts reads",
+      "path": "reference/raw/volume-1-accessible.html",
+      "format": "html",
+      "mediatype": "text/html",
+      "bytes": 787514,
+      "hash": "sha256:f0e376903f0ad9d3b028066f37d235acf40e20b7c0eb221779768ba3b32f5b15",
+      "sources": [
+        {
+          "title": "Phase 1 report: volume 1 (accessible) (GOV.UK)",
+          "web": "https://www.gov.uk/government/publications/the-southport-inquiry-phase-1-report/phase-1-report-volume-1-accessible"
+        }
+      ]
+    }
+  ],
+  "licenses": [
+    {
+      "name": "OGL-UK-3.0",
+      "title": "Open Government Licence v3.0",
+      "path": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+    }
+  ]
+}

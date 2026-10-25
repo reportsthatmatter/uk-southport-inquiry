@@ -1,0 +1,215 @@
+report: uk-southport-inquiry
+adjudicated: 2026-10-25
+by: "Claude (Opus 5.5)"
+method: "Held-out reference (tagged-PDF blocks, reference/blocks.jsonl): 30 page breaks drawn by `pnpm score --adjudicate-draft` (seeded; random and disagreement strata). Question: does a new block (numbered paragraph, heading, quotation, list item, table row, unnumbered paragraph) start at the break, or does it run on. Decided from pdftotext -layout of both pages (born-digital, single column): a label, heading, box or quotation opening the page, or a chronology row opening with its own date, is a split; a sentence running on, or a row marked (continued), is a join. Adjudicated 2026-10-25 after the joinByTags change."
+breaks:
+  - page: 7
+    prev: "247"
+    next: "Oversight of AR’s online activity by Lancashire County Counc"
+    verdict: split
+    stratum: random
+    image: false
+    note: "contents entries"
+  - page: 22
+    prev: "opportunities for that to occur."
+    next: "The role of AR’s parents"
+    verdict: split
+    stratum: random
+    image: false
+    note: "section heading opens the page"
+  - page: 23
+    prev: "efforts to address concerns about AR."
+    next: "45. AR’s parents’ obstructive approach (again most notable i"
+    verdict: split
+    stratum: random
+    image: false
+    note: "numbered paragraph"
+  - page: 27
+    prev: "refer it on to others."
+    next: "61. Second, and relatedly, this case has demonstrated the ur"
+    verdict: split
+    stratum: random
+    image: false
+    note: "numbered paragraph"
+  - page: 30
+    prev: "y a court-imposed order, including how any such order could "
+    next: "Chapter 2: Overview chronology"
+    verdict: split
+    stratum: random
+    image: false
+    note: "chapter heading"
+  - page: 34
+    prev: "prove unsuccessful."
+    next: "during an IT lesson and is told to stop "
+    verdict: split
+    stratum: disagreement
+    image: false
+    note: "new chronology row (15 November 2019); the date cell's last line was read into the summary"
+  - page: 38
+    prev: "of neglect."
+    next: "Detailed event summary"
+    verdict: split
+    stratum: random
+    image: false
+    note: "the table's header row repeats on each page"
+  - page: 47
+    prev: "unmet needs and being low risk."
+    next: "2020 and stresses that he does not consent "
+    verdict: split
+    stratum: disagreement
+    image: false
+    note: "new chronology row (2 November 2020)"
+  - page: 51
+    prev: "escalated to the urgent waiting list."
+    next: "2021 by CSC in respect of both AR’s and "
+    verdict: split
+    stratum: disagreement
+    image: false
+    note: "new chronology row (24 June 2021)"
+  - page: 54
+    prev: "not make a Prevent referral."
+    next: "2021 Dr Ramasubramanian notes no "
+    verdict: split
+    stratum: disagreement
+    image: false
+    note: "new chronology row"
+  - page: 56
+    prev: "referral is sent to the MASH."
+    next: "2021 parents and LCC for AR to attend a "
+    verdict: split
+    stratum: disagreement
+    image: false
+    note: "new chronology row"
+  - page: 63
+    prev: "monitoring."
+    next: "2022 about Ms Steed and requests a new "
+    verdict: split
+    stratum: disagreement
+    image: false
+    note: "new chronology row"
+  - page: 68
+    prev: "AR’s place."
+    next: "2023 Council to conduct a visit to AR’s "
+    verdict: split
+    stratum: disagreement
+    image: false
+    note: "new chronology row"
+  - page: 73
+    prev: "delivery of this order."
+    next: "2023 Machete Congo from Huntingandknives."
+    verdict: split
+    stratum: random
+    image: false
+    note: "new chronology row"
+  - page: 76
+    prev: "from Amazon."
+    next: "AR demands from Alphonse R the knife/"
+    verdict: join
+    stratum: disagreement
+    image: false
+    note: "the 22 July 2024 row continues, marked '(continued)' in the date cell"
+  - page: 97
+    prev: "ensure no one else has to endure such lasting trauma."
+    next: "55. Jonathan Hayes expressed his acute consciousness of the "
+    verdict: split
+    stratum: random
+    image: false
+    note: "numbered paragraph"
+  - page: 159
+    prev: "Education assisted the Inquiry on this aspect."
+    next: "181.  Significantly, it was apparent from Ms Dixon’s evidenc"
+    verdict: split
+    stratum: random
+    image: false
+    note: "numbered paragraph"
+  - page: 171
+    prev: "have been in the school taxi (see Chapter 11: Education).279"
+    next: "Recommendation 5: The Department for Transport should ensure"
+    verdict: split
+    stratum: random
+    image: false
+    note: "recommendation box"
+  - page: 174
+    prev: "at locations and with codes visible to 999 call handlers."
+    next: "Observation D: The efforts which I am told are presently und"
+    verdict: split
+    stratum: random
+    image: false
+    note: "observation box"
+  - page: 194
+    prev: "found in a black holdall under the bunk beds in AR’s room."
+    next: "57. It is inconceivable that AR bought this archery bow and "
+    verdict: split
+    stratum: random
+    image: false
+    note: "numbered paragraph"
+  - page: 195
+    prev: "dicated that plain grey bags or black wrapping were used.354"
+    next: "61. Mr Sutherland said that at the time the company did not "
+    verdict: split
+    stratum: random
+    image: false
+    note: "numbered paragraph"
+  - page: 207
+    prev: "An automatic order confirmation was sent.400"
+    next: "97. On the morning of 12 June 2023, AR emailed the company a"
+    verdict: split
+    stratum: random
+    image: false
+    note: "numbered paragraph"
+  - page: 210
+    prev: "knives if they looked “threatening”;413"
+    next: "c.  It is apparent that the company has in the past made rep"
+    verdict: split
+    stratum: disagreement
+    image: false
+    note: "lettered item"
+  - page: 216
+    prev: "with the Gurkhas."
+    next: "“Q. […]you didn’t realise that it might have a connotation w"
+    verdict: split
+    stratum: random
+    image: false
+    note: "quoted transcript opens the page"
+  - page: 217
+    prev: "ting content. I formed the clear impression that Mr Wheeler "
+    next: "appeared not to be on top of his own website content. Wherea"
+    verdict: join
+    stratum: random
+    image: false
+    note: "sentence runs on mid-clause"
+  - page: 233
+    prev: " information once the delivery is complete. See Details”.528"
+    next: "174.  The IP address used for this purchase was 2.98.141.79 "
+    verdict: split
+    stratum: random
+    image: false
+    note: "numbered paragraph"
+  - page: 239
+    prev: "in in the garden.555 The second Cerbera knife, matching the "
+    next: "knife used in the attack, was found wrapped in a duvet on th"
+    verdict: join
+    stratum: random
+    image: false
+    note: "sentence runs on mid-clause"
+  - page: 241
+    prev: "cumbersome and requiring a high degree of skill to use.559"
+    next: "209.  Nevertheless, based on the Phase 1 evidence. I do have"
+    verdict: split
+    stratum: random
+    image: false
+    note: "numbered paragraph"
+  - page: 243
+    prev: "tional archery bows. As explained by Mr Jones, crossbows:564"
+    next: "a.  Are easy to become proficient with, requiring minimal in"
+    verdict: split
+    stratum: disagreement
+    image: false
+    note: "lettered item"
+  - page: 265
+    prev: "investigating a death."
+    next: "Recommendations"
+    verdict: split
+    stratum: random
+    image: false
+    note: "section heading"

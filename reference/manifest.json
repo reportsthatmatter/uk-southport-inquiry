@@ -1,0 +1,42 @@
+{
+  "report": "uk-southport-inquiry",
+  "set": "held-out",
+  "edition": "Volume 1's PDF's own structure tree (tagged PDF, InDesign: H, P, Note, LI, Table, Figure), version 2 (July 2026)",
+  "licence": "Crown copyright, reused under the Open Government Licence v3.0 (https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).",
+  "fetched": "2026-10-25",
+  "sources": [
+    {
+      "path": "archive/southport-inquiry-phase-1-volume-1-hc1768-i-v2.pdf",
+      "sha256": "c27fdbfc7b76aca70cf72af17349da56ad3b46ab4faf391e83978ed361c87bcf",
+      "bytes": 6340036
+    },
+    {
+      "path": "reference/raw/volume-1-accessible.json",
+      "url": "https://www.gov.uk/api/content/government/publications/the-southport-inquiry-phase-1-report/phase-1-report-volume-1-accessible",
+      "sha256": "12712a1235ca201bd8943a65e72621c9c755a35125885e89523d9b76ff531291",
+      "bytes": 827070
+    }
+  ],
+  "sources_note": "The reference is derived from the source PDF already in archive/, so no copy of the PDF is kept under reference/raw/.",
+  "blocks": {
+    "path": "reference/blocks.jsonl",
+    "sha256": "33df1733ca3f1987c4259fa933bdb3f9571246fcff93b3a71f07197c08dc9f9e",
+    "normaliser": "reportsthatmatter scripts/score/reference.py, adapter tagged, version 2",
+    "built": "2026-10-25",
+    "counts": {
+      "contents": 1,
+      "heading": 145,
+      "list": 3,
+      "note": 641,
+      "paragraph": 831,
+      "quote": 72
+    },
+    "markers": 641,
+    "markers_linked": 641,
+    "words": 88557
+  },
+  "caveats": [
+    "A new inquiry, so held out: score it, do not tune passes on it.",
+    "The served text is GOV.UK's accessible HTML edition (cleanEdition, govuk-html.ts); this reference is the PDF's tags, which stand as the answer key for the PDF reading (pnpm score --shadow). The HTML edition's content-API record is cached beside it (reference/raw/volume-1-accessible.json; the body is volume-1-accessible.html)."
+  ]
+}
